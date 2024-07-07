@@ -12,17 +12,30 @@ const Accordion = () => {
     setSelected(getCurrentId === selected ? null : getCurrentId);
   };
 
+  // const handleMultiSelection = (getCurrentId: string) => {
+  //   const cpyMultiple = [...multiple];
+  //   const findIndexOfCurrentId = cpyMultiple.indexOf(getCurrentId);
+
+  //   if (findIndexOfCurrentId === -1) {
+  //     cpyMultiple.push(getCurrentId);
+  //   } else {
+  //     cpyMultiple.splice(findIndexOfCurrentId, 1);
+  //   }
+
+  //   setMultiple(cpyMultiple);
+  // };
+
   const handleMultiSelection = (getCurrentId: string) => {
-    const cpyMultiple = [...multiple];
-    const findIndexOfCurrentId = cpyMultiple.indexOf(getCurrentId);
+    const findIndexOfCurrentId = multiple.indexOf(getCurrentId);
 
     if (findIndexOfCurrentId === -1) {
-      cpyMultiple.push(getCurrentId);
+      setMultiple([...multiple, getCurrentId]);
     } else {
-      cpyMultiple.splice(findIndexOfCurrentId, 1);
+      setMultiple([
+        ...multiple.slice(0, findIndexOfCurrentId),
+        ...multiple.slice(findIndexOfCurrentId + 1),
+      ]);
     }
-
-    setMultiple(cpyMultiple);
   };
 
   return (
