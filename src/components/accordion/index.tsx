@@ -13,7 +13,6 @@ const Accordion = () => {
   };
 
   const handleMultiSelection = (getCurrentId: string) => {
-    console.log("hello");
     const cpyMultiple = [...multiple];
     const findIndexOfCurrentId = cpyMultiple.indexOf(getCurrentId);
 
@@ -26,7 +25,6 @@ const Accordion = () => {
     setMultiple(cpyMultiple);
   };
 
-  console.log(selected, multiple);
   return (
     <div className="wrapper">
       <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
@@ -45,7 +43,12 @@ const Accordion = () => {
                 className="title"
               >
                 <h3>{dataItem.question}</h3>
-                <span>+</span>
+                <span>
+                  {selected === dataItem.id ||
+                  multiple.indexOf(dataItem.id) !== -1
+                    ? "-"
+                    : "+"}
+                </span>
               </div>
 
               {enableMultiSelection
