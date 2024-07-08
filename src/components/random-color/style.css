@@ -1,0 +1,15 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.hexDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 60px;
+  margin-top: 50px;
+  gap: 20px;
+}
